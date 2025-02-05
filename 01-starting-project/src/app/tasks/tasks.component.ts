@@ -1,16 +1,15 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent, NgFor],
+  imports: [TaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  @Input({required:true}) userId!:string
+  @Input({ required: true }) userId!: string;
   @Input() name?: string;
 
   tasks = [
@@ -39,7 +38,7 @@ export class TasksComponent {
     },
   ];
 
-  get selectedUserTasks(){
-    return this.tasks.filter((task)=>task.userId = this.userId)
+  get selectedUserTasks() {
+    return this.tasks.filter((task) => task.userId === this.userId);
   }
 }
