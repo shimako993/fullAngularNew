@@ -1,27 +1,31 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from '../task/task.model';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NewTaskData } from '../task/task.model';
 
 @Component({
   selector: 'app-new-task',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
-  // @Output() newTask = new EventEmitter<Task>()
-  // @Input({required:true}) task!: Task
+  @Output() cancel = new EventEmitter<void>();
+  @Output() add = new EventEmitter<NewTaskData>();
 
+  enteredTitle = '';
+  enteredSummary = '';
+  enteredDate = '';
 
-  // onAddTask(){
-  //   this.newTask.emit(this.newTasks)
-  // }
+  onCancel() {
+    this.cancel.emit();
+  }
 
-  newTask: Task = {
-    id: 't10',
-    userId: 'u2',
-    title: 'New task',
-    summary: 'New task',
-    dueDate: '2025-10-20',
-  };
+  onSubmit() {
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSummary,
+      date: this.enteredDate,
+    });
+  }
 }
