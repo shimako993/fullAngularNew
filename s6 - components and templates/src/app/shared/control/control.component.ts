@@ -31,7 +31,7 @@ export class ControlComponent implements AfterContentInit {
   // @HostListener('click') onClick() {
   //   console.log('Clicked');
   // }
-  label = input.required<string>;
+  label = input.required<string>();
   private el = inject(ElementRef);
   // @ContentChild('input') private control?: ElementRef<
   //   HTMLInputElement | HTMLTextAreaElement
