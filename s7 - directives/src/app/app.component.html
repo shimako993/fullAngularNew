@@ -4,11 +4,12 @@
   <hr />
 
   <app-auth />
-  @if (isAdmin()) {
+  <!-- @if (isAdmin()) {
 
   <p>Only admin should see</p>
-  }
+  } -->
 
   <!-- <p *ngIf="isAdmin()">Only admin should see</p> -->
 
+  <p appAuth="admin">Only admin should see</p>
 </main>
